@@ -1,15 +1,8 @@
 #!/usr/bin/ruby
 #
-# == Synopsis
-#
-# mtscrape: parse and download streams of ZDF.de Mediathek
-#
-# == Usage
-#
 # mtscrape [OPTIONS] [SOURCES]
 #
-#  The following OPTIONS can be specified:
-#
+# Options:
 #   -a, --age       Maximum age of feed item
 #   -c, --convert   Convert wmv to ogg/theora
 #   -d, --dir       Output directory
@@ -18,92 +11,15 @@
 #   -h, --help      This help text
 #   -v, --verbose   Verbose output
 #
-#  Note: -a and -m are only used in combination with -C
-#        -f is not used in combination with -A
-#
-#  The following SOURCES can be specified:
-#
+# Sources:
 #   -A, --asx       Parse ASX link/file directly
 #   -C, --category  Parse RSS feed of mediathek category ID
 #   -I, --item      Parse JSON of mediathek item ID
 #   -L, --link      Parse JSON of mediathek link
 #
+#  Note: -a and -m are only used in combination with -C
+#        -f is not used in combination with -A
 #  Note: you can specify all sources multiple times to download multiple items.
-#
-# == Examples
-#
-# This command will download the item with ID 257404 (heute 100sec, 15.10.07):
-#
-#   mtscrape -v -I 257404
-#
-# Same file as above, but using the ASX file directly (easier to find in the webinterface):
-#
-#  mtscrape -v -A http://wstreaming.zdf.de/zdf/veryhigh/071015_hko_2000.asx
-#
-# Same file as above, but using the HTTP link directly (easier to find in the RSS feed):
-#
-#  mtscrape -v -L http://www.zdf.de/ZDFmediathek/content/heute_100SEC/166/257404
-#
-# This will stream all items from category 208 (JBK) and 414 (Maybritt Illner)
-# since one week ago into directory /data/talkshows/:
-#
-#   mtscrape -v -a 7 -d /data/talkshows -C 208 -C 414
-#
-# This will stream all items from category ID 228 (heute) since yesterday whose
-# title matches the regular expression '.*heute-journal.*':
-#
-#   mtscrape -v -a 1 -C 228 -m '.*heute-journal.*'
-#
-# == Bugs
-#
-# This script will not work with livestreams. mtscrape has been designed for
-# automatic download of ondemand content, but downloading (parts) of the
-# livestream requires manual work (i.e. stoping the recording) and is therefore
-# not implemented in this script.
-#
-# In fact, mtscrape even prevents livestreams from being downloaded if they appear
-# in the RSS feeds.
-#
-# To dump the livestream you can use mplayer directly:
-#
-#   mplayer \
-#      -playlist http://wgeostreaming.zdf.de/encoder/livestream15_vh.asx \
-#      -dumpstream \
-#      -dumpfile zdf_stream.wmv
-#
-# == Requirements
-#
-# To use this script you need the following software installed on your system:
-#
-#   - Ruby-1.8.x (apt-get install ruby1.8 rubygems, emerge ruby, etc)
-#   - Ruby-JSON (gem install json)
-#   - LibXML-Ruby (gem install libxml-ruby)
-#   - mplayer (apt-get install mplayer, emerge mplayer, etc)
-#   - ffmpeg2theora (only for --convert)
-#
-# == License
-#
-# This program is free software: you can redistribute it and/or modify it under
-# the terms of the GNU General Public License as published by the Free Software
-# Foundation, either version 3 of the License, or (at your option) any later
-# version.
-#
-# This program is distributed in the hope that it will be useful, but WITHOUT
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
-# details.
-#
-# You should have received a copy of the GNU General Public License along with
-# this program. If not, see <http://www.gnu.org/licenses/>.
-#
-# == Copyright
-#
-# 2007 Benedikt Boehm <hollow@gentoo.org>
-#
-# == ChangeLog
-#
-#  - Oct 26 2007: add --convert (v0.2)
-#  - Oct 15 2007: initial release (v0.1)
 
 require 'rubygems'
 require 'date'
