@@ -4,9 +4,9 @@ mtscrape
 
 :Author: `Benedikt Böhm <bb@xnull.de>`_
 :Version: 0.2
-:Web: http://bb.xnull.de/projects/mtscrape/
-:Source: http://git.xnull.de/cgit/mtscrape/ (also on `github <http://github.com/hollow/mtscrape>`_)
-:Download: http://bb.xnull.de/projects/mtscrape/dist/
+:Web: http://github.com/hollow/mtscrape
+:Git: ``git clone https://github.com/hollow/mtscrape.git``
+:Download: http://github.com/hollow/mtscrape/downloads
 
 Rationale
 =========
